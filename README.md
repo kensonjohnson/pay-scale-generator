@@ -1,0 +1,1 @@
+# pay-scale-generator
