@@ -1,0 +1,20 @@
+:root {
+    --grid-rows: 1;
+    --grid-cols: 1;
+}
+
+#grid {
+    display: grid;
+    margin: auto;
+    width: 80vw;
+    height: 80vw;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    border: 3px solid black;
+}
+
+.grid-square {
+    user-select: none;
+    text-align: center;
+    border: 1px solid black;
+}
