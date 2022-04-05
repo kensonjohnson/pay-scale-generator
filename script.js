@@ -1,8 +1,9 @@
 const container = document.getElementById('grid');
 
-function createGrid(rows = 20, cols = 5) {
+function createGrid(rows = 21, cols = 5, startingPay = 16, yearly = 0.25, gradeIncrement = 1) {
     container.style.setProperty('--grid-rows', rows + 1);
     container.style.setProperty('--grid-cols', cols + 1);
+    basePay = startingPay;
 
     //run one loop to create legend accross top of grid
     for (i = 0; i <= cols; i++) {
@@ -21,15 +22,18 @@ function createGrid(rows = 20, cols = 5) {
         //first create cell for side legend
         let cell = document.createElement("div");
         container.appendChild(cell).className = "grid-cell";
-        cell.innerHTML = i + 1;
-        if (i == rows - 1) { cell.innerHTML = `${i+1}+` }
+        cell.innerHTML = i;
+        if (i == rows - 1) { cell.innerHTML = `${i}+` }
+        let pay = basePay
 
         //now create remaining cells within current row i
         for (j = 0; j < cols; j++) {
             let cell = document.createElement("div");
             container.appendChild(cell).className = "grid-cell";
-            cell.innerHTML = `$${j + 1}`
+            cell.innerHTML = `$${Number.parseFloat(pay).toFixed(2)}`
+            pay = pay + gradeIncrement;
         }
+        basePay = basePay + yearly;
     }
 }
 
