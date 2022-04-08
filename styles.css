@@ -3,6 +3,22 @@
     --grid-cols: 1;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.form-container {
+    margin: 30px auto;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+}
+
 #grid {
     display: grid;
     margin: auto;

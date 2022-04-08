@@ -11,6 +11,34 @@
 </head>
 
 <body>
+    <div class="form-container">
+
+        <div>
+            <label for="rows">Number of years to count up to (10 - 35):</label>
+            <input type="number" id="rows" name="rows" min="10" max="35" value="20">
+        </div>
+        <div>
+            <label for="cols">Number of Pay Grades (2 - 9):</label>
+            <input type="number" id="cols" name="cols" min="2" max="9" value="5">
+        </div>
+        <div>
+            <label for="startingPay">Starting Pay for Grade 1 Year 0 Employee (e.g: 16.00):</label>
+            <input type="number" name="startingPay" id="startingPay" value="16.00" step="0.01">
+        </div>
+        <div>
+            <label for="yearly">Pay increase per year served (e.g: 0.25):</label>
+            <input type="number" name="yearly" id="yearly" value="0.25" step="0.01">
+        </div>
+        <div>
+            <label for="gradeIncrement">Pay increase per Pay Grade (e.g: 1.00):</label>
+            <input type="number" name="gradeIncrement" id="gradeIncrement" value="1.00" step="0.01">
+        </div>
+        <div>
+            <button data-submit-button>Submit</button>
+        </div>
+
+
+    </div>
     <div id="grid"></div>
 </body>
 

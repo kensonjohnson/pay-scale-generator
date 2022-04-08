@@ -1,9 +1,22 @@
 const container = document.getElementById('grid');
+const submitButton = document.querySelector(('[data-submit-button]'))
+let rows;
+let cols;
+let startingPay;
+let yearly;
+let gradeIncrement;
 
-function createGrid(rows = 21, cols = 5, startingPay = 16, yearly = 0.25, gradeIncrement = 1) {
+
+function createGrid() {
+    //erase all HTML within the grid div, in case a grid already exists
+    container.innerHTML = '';
+
+    //set the CSS values for the grid template rows and cols
     container.style.setProperty('--grid-rows', rows + 1);
     container.style.setProperty('--grid-cols', cols + 1);
-    basePay = startingPay;
+
+
+    let basePay = startingPay;
 
     //run one loop to create legend accross top of grid
     for (i = 0; i <= cols; i++) {
@@ -18,12 +31,12 @@ function createGrid(rows = 21, cols = 5, startingPay = 16, yearly = 0.25, gradeI
     };
 
     //create loop that generates remaining cells
-    for (i = 0; i < rows; i++) {
+    for (i = 0; i <= rows; i++) {
         //first create cell for side legend
         let cell = document.createElement("div");
         container.appendChild(cell).className = "grid-cell";
         cell.innerHTML = i;
-        if (i == rows - 1) { cell.innerHTML = `${i}+` }
+        if (i == rows) { cell.innerHTML = `${i}+` }
         let pay = basePay
 
         //now create remaining cells within current row i
@@ -37,4 +50,19 @@ function createGrid(rows = 21, cols = 5, startingPay = 16, yearly = 0.25, gradeI
     }
 }
 
-createGrid()
+//this sets all of the current user inputs diplayed on screen to the currect
+//variables and makes sure that they are parsed as a number. Then creates new grid.
+function handleForm() {
+    rows = parseInt(document.getElementById('rows').value);
+    cols = parseInt(document.getElementById('cols').value);
+    startingPay = parseFloat(document.getElementById('startingPay').value);
+    yearly = parseFloat(document.getElementById('yearly').value);
+    gradeIncrement = parseFloat(document.getElementById('gradeIncrement').value);
+
+    createGrid()
+}
+
+//set event listener for submit button
+submitButton.addEventListener('click', button => {
+    handleForm()
+})
