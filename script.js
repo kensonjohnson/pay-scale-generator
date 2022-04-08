@@ -1,11 +1,20 @@
 const container = document.getElementById('grid');
-const submitButton = document.querySelector(('[data-submit-button]'))
+const header = document.getElementById('header');
+const submitButton = document.querySelector(('[data-submit-button]'));
 let rows;
 let cols;
 let startingPay;
 let yearly;
 let gradeIncrement;
+let companyName;
+let departmentName;
 
+function createHeader() {
+    if (companyName === null) return;
+    let title = document.createElement("div");
+    header.appendChild(title).className = "title";
+    title.innerHTML = `${companyName} ${departmentName} Pay Scale`
+}
 
 function createGrid() {
     //erase all HTML within the grid div, in case a grid already exists
@@ -24,9 +33,9 @@ function createGrid() {
         let cell = document.createElement("div");
         container.appendChild(cell).className = "grid-cell";
         if (i == 0) {
-            cell.innerHTML = "Years Served"
+            cell.innerHTML = "Years Served";
         } else {
-            cell.innerHTML = `Grade ${i}`
+            cell.innerHTML = `Grade ${i}`;
         }
     };
 
@@ -37,7 +46,7 @@ function createGrid() {
         container.appendChild(cell).className = "grid-cell";
         cell.innerHTML = i;
         if (i == rows) { cell.innerHTML = `${i}+` }
-        let pay = basePay
+        let pay = basePay;
 
         //now create remaining cells within current row i
         for (j = 0; j < cols; j++) {
@@ -58,11 +67,14 @@ function handleForm() {
     startingPay = parseFloat(document.getElementById('startingPay').value);
     yearly = parseFloat(document.getElementById('yearly').value);
     gradeIncrement = parseFloat(document.getElementById('gradeIncrement').value);
+    companyName = document.getElementById('companyName').value;
+    departmentName = document.getElementById('departmentName').value;
 
-    createGrid()
+    createHeader();
+    createGrid();
 }
 
 //set event listener for submit button
 submitButton.addEventListener('click', button => {
-    handleForm()
+    handleForm();
 })

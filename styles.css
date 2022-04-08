@@ -10,6 +10,19 @@ body {
     justify-content: center;
 }
 
+#header {
+    border: 2px solid black;
+    border-radius: 7px;
+    width: fit-content;
+    margin: 15px auto;
+    padding: 1px 5px;
+}
+
+.title {
+    text-align: center;
+    margin: auto;
+}
+
 .form-container {
     margin: 30px auto;
 }
@@ -35,4 +48,22 @@ body {
     border: 1px solid black;
     padding: 5px;
     width: 100px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+    padding: 5px 0;
+    color: #fff;
+}
+
+.footer-content {
+    margin: auto;
+    color: #fff;
+    text-align: center;
 }
