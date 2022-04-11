@@ -1,6 +1,8 @@
 const container = document.getElementById('grid');
 const header = document.getElementById('header');
-const submitButton = document.querySelector(('[data-submit-button]'));
+const submitButton = document.querySelector('[data-submit-button]');
+const resetButton = document.querySelector('[data-reset]');
+const printButton = document.querySelector('[data-print]')
 let rows;
 let cols;
 let startingPay;
@@ -82,10 +84,19 @@ function handleForm() {
     showCurrentStep();
 }
 
-//set event listener for submit button
+//setup buttons
 submitButton.addEventListener('click', button => {
     handleForm();
 })
+
+resetButton.addEventListener('click', button => {
+    location.reload();
+})
+
+printButton.addEventListener('click', button => {
+    window.print();
+})
+
 
 
 /*************************************************/

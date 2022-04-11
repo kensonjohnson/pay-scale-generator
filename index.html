@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Pay Scale Generator</title>
@@ -83,13 +84,20 @@
             </div>
         </div>
 
-        <div class="result hide" data-step>
+        <div class="hide" id="result" data-step>
+
+            <button class="reset no-print" data-reset><i class="fa fa-arrow-left" style="color: white;"></i></button>
+            <button class="print no-print" data-print><i class="fa fa-print" style="color: white;"></i></button>
+
             <div id="header" class="header"></div>
             <div id="grid" class="header"></div>
+            <div class="print-instructions no-print">
+                <p>When printing, be sure to uncheck the box that includes headers!</p>
+            </div>
         </div>
     </div>
 
-    <footer>
+    <footer class="no-print">
         <div class="footer-content">
             Created by Kenson Johnson -- <a href="https://github.com/kensonjohnson/pay-scale-generator">Source Code</a>
         </div>

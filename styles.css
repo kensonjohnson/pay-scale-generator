@@ -176,6 +176,36 @@ footer {
     }
 }
 
+.reset {
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    font-size: 2em;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+.print {
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    background-color: black;
+    font-size: 2em;
+    position: absolute;
+    top: 4em;
+    left: 1em;
+}
+
 
 /* This section is for the custom number inputs used by the "form" */
 
@@ -241,4 +271,19 @@ input[type=number]::-webkit-outer-spin-button {
     height: 3rem;
     font-weight: bold;
     text-align: center;
+}
+
+.print-instructions {
+    margin: auto;
+    margin-top: 5em;
+}
+
+.print-instructions>p {
+    font-size: 2em;
+}
+
+@media print {
+    .no-print {
+        visibility: hidden;
+    }
 }
