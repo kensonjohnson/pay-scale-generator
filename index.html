@@ -5,13 +5,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <title>Pay Scale Generator</title>
 </head>
 
 <body>
-    <div id="grid"></div>
+    <div data-multi-step class="container">
+        <div class="card" data-step>
+            <h2 class="step-title">Setup Pay Scale Size</h2>
+            <div class="form-group">
+                <label for="rows">Number of years to count up to (10 - 35):</label>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input type="number" id="rows" name="rows" min="10" max="35" value="20">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cols">Number of Pay Grades (2 - 9):</label>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input type="number" id="cols" name="cols" min="2" max="9" value="5">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+
+            </div>
+            <div class="button-group">
+                <button type="button" data-previous>Previous</button>
+                <button type="button" data-next>Next</button>
+            </div>
+        </div>
+        <div class="card" data-step>
+            <h2 class="step-title">Determine how Pay Increases</h2>
+            <div class="form-group">
+                <label for="startingPay">Starting Pay for Grade 1 Year 0 Employee (e.g: 16.00):</label>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input type="number" name="startingPay" id="startingPay" value="16.00" step="0.01">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="yearly">Pay increase per year served (e.g: 0.25):</label>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input type="number" name="yearly" id="yearly" value="0.25" step="0.01">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gradeIncrement">Pay increase per Pay Grade (e.g: 1.00):</label>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                    <input type="number" name="gradeIncrement" id="gradeIncrement" value="1.00" step="0.01">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+            </div>
+            <div class="button-group">
+                <button type="button" data-previous>Previous</button>
+                <button type="button" data-next>Next</button>
+            </div>
+        </div>
+        <div class="card" data-step>
+            <h2 class="step-title">Enter Company Details</h2>
+            <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                <input type="text" name="companyName" id="companyName" value="" placeholder="e.g. Simulare LLC">
+            </div>
+            <div class="form-group">
+                <label for="departmentName">Department:</label>
+                <input type="text" name="departmentName" id="departmentName" value="" placeholder="e.g. App Division">
+            </div>
+            <div class="button-group">
+                <button type="button" data-previous>Previous</button>
+                <button data-submit-button>Submit</button>
+            </div>
+        </div>
+
+        <div class="hide" id="result" data-step>
+
+            <button class="reset no-print" data-reset><i class="fa fa-arrow-left" style="color: white;"></i></button>
+            <button class="print no-print" data-print><i class="fa fa-print" style="color: white;"></i></button>
+
+            <div id="header" class="header"></div>
+            <div id="grid" class="header"></div>
+            <div class="print-instructions no-print">
+                <p>When printing, be sure to uncheck the box that includes headers!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="no-print">
+        <div class="footer-content">
+            Created by Kenson Johnson -- <a href="https://github.com/kensonjohnson/pay-scale-generator">Source Code</a>
+        </div>
+    </footer>
 </body>
 
 </html>

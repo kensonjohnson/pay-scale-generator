@@ -1,22 +1,284 @@
 :root {
-    --grid-rows: 1;
-    --grid-cols: 1;
+  --grid-rows: 1;
+  --grid-cols: 1;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+/* Header Section */
+
+#header {
+  border: 2px solid black;
+  border-radius: 7px;
+  width: fit-content;
+  margin: 15px auto;
+  padding: 1px 5px;
+}
+
+.title {
+  text-align: center;
+  margin: auto;
+  font-size: 1.5rem;
+}
+
+/* Pay Scale Section */
+
 #grid {
-    display: grid;
-    margin: auto;
-    width: fit-content;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
-    border: 2px solid black;
-    border-radius: 3px;
+  display: grid;
+  margin: auto;
+  width: fit-content;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  border: 2px solid black;
+  border-radius: 3px;
 }
 
 .grid-cell {
-    user-select: none;
-    text-align: center;
-    border: 1px solid black;
-    padding: 5px;
-    width: 100px;
+  user-select: none;
+  text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+  width: 100px;
+}
+
+/* Footer Section */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #111;
+  height: auto;
+  width: 100vw;
+  padding: 5px 0;
+  color: #fff;
+}
+
+.footer-content {
+  margin: auto;
+  color: #fff;
+  text-align: center;
+}
+
+/* Multi-step form section */
+
+.container {
+  margin: 30px auto;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: fit-content;
+  margin: 0 auto;
+  animation: fade 250ms ease-in-out forwards;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group > button {
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 100px;
+  height: 35px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  gap: 0.5em;
+}
+
+.form-group:last-child {
+  margin: 0;
+}
+
+.form-group > label {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.form-group > input {
+  border: 1px solid #333;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  padding: 0.25em;
+}
+
+.step-title {
+  margin: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card.active {
+  animation: slide 250ms 125ms ease-in-out both;
+}
+
+.multi-step-form {
+  overflow: hidden;
+  position: relative;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(200%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.reset {
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background-color: black;
+  font-size: 2em;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+
+.print {
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background-color: black;
+  font-size: 2em;
+  position: absolute;
+  top: 4em;
+  left: 1em;
+}
+
+/* This section is for the custom number inputs used by the "form" */
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  border: 2px solid #ddd;
+  display: inline-flex;
+}
+
+.number-input,
+.number-input * {
+  box-sizing: border-box;
+  width: fit-content;
+  margin: auto;
+}
+
+.number-input button {
+  outline: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  width: 1rem;
+  height: 2px;
+  background-color: #212121;
+  transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type="number"] {
+  font-family: sans-serif;
+  max-width: 10rem;
+  padding: 0.5rem;
+  border: solid #ddd;
+  border-width: 0 2px;
+  font-size: 2rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.print-instructions {
+  margin: auto;
+  margin-top: 5em;
+}
+
+.print-instructions > p {
+  font-size: 2em;
+}
+
+@media print {
+  .no-print {
+    visibility: hidden;
+  }
 }
