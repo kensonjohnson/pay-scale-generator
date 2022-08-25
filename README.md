@@ -11,6 +11,6 @@ Seeing his need to change the numbers himself, I created this app to generate ne
 
 ## Highlights:
 
-- User input is handled through a very fancy multi-step form with awesome slide-in animations.
-- Information is generated dynamically based off of the users inputs.
+- User input is handled through a multi-step form with slide-in animations.
+- Information is generated dynamically based off of the user's inputs.
 - Content is displayed by manipulating the DOM via JavaScript.
